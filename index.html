@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Email Gate</title>
+  <style>
+    body { font-family: Arial, sans-serif; display:flex; height:100vh; justify-content:center; align-items:center; background:#f5f5f5; }
+    .form-box { background:#fff; padding:20px 30px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    input[type="email"] { width:250px; padding:10px; border:1px solid #ccc; border-radius:6px; }
+    button { padding:10px 16px; margin-left:8px; border:none; border-radius:6px; background:#007bff; color:#fff; cursor:pointer; }
+    button:hover { background:#0056b3; }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <form id="emailForm" method="GET" target="_self">
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
-    <form method="GET" action="https://script.google.com/macros/s/AKfycbwKFzeP-9Ejbajs5MOc6GrRS2oc0GN2PO-DfHxstZXHR1SgpvwQDL3-hTOhE0tkAEyg/exec">
-  <input type="email" name="email" placeholder="Enter your email" required>
-  <button type="submit">Submit</button>
-</form>
+  <script>
+    document.getElementById("emailForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const email = this.email.value;
+      const scriptUrl = "https://script.google.com/macros/s/AKfycbwihrxHb5X9Mo1UZhkcamU0O7X8CygCxNbU2EbsjD3VsPwonlJ7CmfO5yfbMxFbj63New/exec"; // Replace with your deployed Apps Script URL
+      window.location.href = scriptUrl + "?email=" + encodeURIComponent(email);
+    });
+  </script>
 </body>
 </html>
