@@ -12,20 +12,9 @@
   </style>
 </head>
 <body>
-  <div class="form-box">
-    <form id="emailForm" method="GET" target="_self">
-      <input type="email" name="email" placeholder="Enter your email" required>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-
-  <script>
-    document.getElementById("emailForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const email = this.email.value;
-      const scriptUrl = "https://script.google.com/macros/s/AKfycbwihrxHb5X9Mo1UZhkcamU0O7X8CygCxNbU2EbsjD3VsPwonlJ7CmfO5yfbMxFbj63New/exec"; // Replace with your deployed Apps Script URL
-      window.location.href = scriptUrl + "?email=" + encodeURIComponent(email);
-    });
-  </script>
+ <form method="POST" action="https://script.google.com/macros/s/AKfycbwihrxHb5X9Mo1UZhkcamU0O7X8CygCxNbU2EbsjD3VsPwonlJ7CmfO5yfbMxFbj63New/exec">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Submit</button>
+</form>
 </body>
 </html>
